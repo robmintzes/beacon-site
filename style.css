@@ -1,0 +1,285 @@
+:root {
+  --bg: #0a0a0a;
+  --bg-card: #0d0d0d;
+  --border: #1e1e1e;
+  --text: #e0e0e0;
+  --text-muted: #888;
+  --text-dim: #555;
+  --white: #fff;
+  --accent: #39e090;
+  --accent-dim: rgba(57, 224, 144, 0.08);
+  --accent-glow: rgba(57, 224, 144, 0.2);
+  --warning: #f59e0b;
+  --warning-dim: rgba(245, 158, 11, 0.07);
+  --font-mono: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ── */
+
+header {
+  text-align: center;
+  padding: 5rem 2rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 320px;
+  background: radial-gradient(ellipse at top, var(--accent-glow) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+h1 {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  position: relative;
+}
+
+.tagline {
+  margin-top: 0.85rem;
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.65;
+  position: relative;
+}
+
+/* ── Main ── */
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 1.75rem;
+}
+
+/* ── App cards ── */
+
+.apps {
+  display: flex;
+  gap: 1.5rem;
+  max-width: 840px;
+  width: 100%;
+}
+
+.app-card {
+  flex: 1;
+  border: 1px solid var(--border);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: var(--bg-card);
+  position: relative;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.app-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.app-card:hover {
+  border-color: #2e2e2e;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+.app-card:hover::after {
+  opacity: 0.7;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.platform-icon {
+  font-size: 1rem;
+  opacity: 0.55;
+  line-height: 1;
+}
+
+.app-card h2 {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.05em;
+}
+
+.app-card p {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  flex: 1;
+}
+
+/* ── Buttons ── */
+
+.download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.25rem;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+}
+
+.download-btn::after {
+  content: "↓";
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.download-btn:hover {
+  background: var(--accent-dim);
+  box-shadow: 0 0 20px var(--accent-glow);
+  color: var(--white);
+}
+
+.download-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ── Notice ── */
+
+.notice {
+  max-width: 840px;
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  border-left: 3px solid var(--warning);
+  background: var(--warning-dim);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.notice-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.notice-icon {
+  color: var(--warning);
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.notice h3 {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--warning);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.notice p {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: #aaa;
+}
+
+.notice pre {
+  padding: 0.65rem 1rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid #252525;
+  overflow-x: auto;
+}
+
+.notice code {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #ccc;
+}
+
+/* ── Footer ── */
+
+footer {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  border-top: 1px solid #111;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 680px) {
+  header {
+    padding: 3.5rem 1.5rem 2rem;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  .apps {
+    flex-direction: column;
+  }
+
+  main {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 380px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
