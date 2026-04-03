@@ -200,6 +200,17 @@ main {
   gap: 0.65rem;
 }
 
+.notice.notice-info {
+  border-color: rgba(57, 224, 144, 0.12);
+  border-left-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.notice.notice-info .notice-icon,
+.notice.notice-info h3 {
+  color: var(--accent);
+}
+
 .notice-title {
   display: flex;
   align-items: center;
